@@ -1,0 +1,32 @@
+{
+  "description": "Generate targets from Azure VMs",
+  "files": ["ruby_task_helper/files/task_helper.rb"],
+  "input_method": "stdin",
+  "parameters": {
+    "tenant_id": {
+      "type": "Optional[String[1]]"
+    },
+    "client_id": {
+      "type": "Optional[String[1]]"
+    },
+    "client_secret": {
+      "type": "Optional[String[1]]",
+      "sensitive": true
+    },
+    "subscription_id": {
+      "type": "Optional[String[1]]"
+    },
+    "location": {
+      "type": "Optional[String[1]]"
+    },
+    "tags": {
+      "type": "Optional[Hash[String[1,512], String[1,256]]]"
+    },
+    "resource_group": {
+      "type": "Optional[String[1]]"
+    },
+    "scale_set": {
+      "type": "Optional[String[1]]"
+    }
+  }
+}
