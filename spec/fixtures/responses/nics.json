@@ -1,0 +1,186 @@
+[
+  {
+    "name": "rgtest-1228",
+    "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/another/providers/Microsoft.Network/networkInterfaces/rgtest-1228",
+    "etag": "W/\"569caa04-c816-4a8a-922c-0d294ac90d85\"",
+    "location": "westus",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "resourceGuid": "62934001-0a37-4de2-9196-f643a356f49c",
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/another/providers/Microsoft.Network/networkInterfaces/rgtest-1228/ipConfigurations/ipconfig1",
+          "etag": "W/\"569caa04-c816-4a8a-922c-0d294ac90d85\"",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.1.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": {
+              "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/another/providers/Microsoft.Network/publicIPAddresses/rgtest-1-ip"
+            },
+            "subnet": {
+              "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/another/providers/Microsoft.Network/virtualNetworks/another-vnet/subnets/default"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4"
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": [
+
+        ],
+        "appliedDnsServers": [
+
+        ],
+        "internalDomainNameSuffix": "13c5dvk1qbfe3ajoabol4u0etf.dx.internal.cloudapp.net"
+      },
+      "macAddress": "00-0D-3A-30-41-9B",
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "networkSecurityGroup": {
+        "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/another/providers/Microsoft.Network/networkSecurityGroups/rgtest-1-nsg"
+      },
+      "primary": true,
+      "virtualMachine": {
+        "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/another/providers/Microsoft.Compute/virtualMachines/rgtest-1"
+      },
+      "hostedWorkloads": [
+
+      ],
+      "tapConfigurations": [
+
+      ]
+    },
+    "type": "Microsoft.Network/networkInterfaces"
+  },
+  {
+    "name": "test-instance-1387",
+    "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/networkInterfaces/test-instance-1387",
+    "etag": "W/\"4cc67074-27f9-4982-93e6-beacbba0af82\"",
+    "location": "westus",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "resourceGuid": "357c7273-8200-402a-bc01-f754b6162b20",
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/networkInterfaces/test-instance-1387/ipConfigurations/ipconfig1",
+          "etag": "W/\"4cc67074-27f9-4982-93e6-beacbba0af82\"",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.0.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": {
+              "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/publicIPAddresses/test-instance-1-ip"
+            },
+            "subnet": {
+              "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/virtualNetworks/bolt-test-vnet/subnets/default"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4"
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": [
+
+        ],
+        "appliedDnsServers": [
+
+        ],
+        "internalDomainNameSuffix": "psg1atcvpwnubgoi4gqzwg321h.dx.internal.cloudapp.net"
+      },
+      "macAddress": "00-0D-3A-5A-A5-A8",
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "networkSecurityGroup": {
+        "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/networkSecurityGroups/test-instance-1-nsg"
+      },
+      "primary": true,
+      "virtualMachine": {
+        "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Compute/virtualMachines/test-instance-1"
+      },
+      "hostedWorkloads": [
+
+      ],
+      "tapConfigurations": [
+
+      ]
+    },
+    "type": "Microsoft.Network/networkInterfaces"
+  },
+  {
+    "name": "test-nic",
+    "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/networkInterfaces/test-nic",
+    "etag": "W/\"ee1e4000-1684-4f36-8a55-579a507cd8c4\"",
+    "location": "westus",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "resourceGuid": "1128c8a7-9426-40ff-a617-d0e5abf83c4d",
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/networkInterfaces/test-nic/ipConfigurations/ipconfig1",
+          "etag": "W/\"ee1e4000-1684-4f36-8a55-579a507cd8c4\"",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.0.5",
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": {
+              "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/virtualNetworks/bolt-test-vnet/subnets/default"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4"
+          }
+        },
+        {
+          "name": "test-ip",
+          "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/networkInterfaces/test-nic/ipConfigurations/test-ip",
+          "etag": "W/\"ee1e4000-1684-4f36-8a55-579a507cd8c4\"",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.0.6",
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": {
+              "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/publicIPAddresses/test-nic-ip1"
+            },
+            "subnet": {
+              "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/virtualNetworks/bolt-test-vnet/subnets/default"
+            },
+            "primary": false,
+            "privateIPAddressVersion": "IPv4"
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": [
+
+        ],
+        "appliedDnsServers": [
+
+        ],
+        "internalDomainNameSuffix": "psg1atcvpwnubgoi4gqzwg321h.dx.internal.cloudapp.net"
+      },
+      "macAddress": "00-0D-3A-3B-1B-D7",
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "primary": false,
+      "virtualMachine": {
+        "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Compute/virtualMachines/test-instance-1"
+      },
+      "hostedWorkloads": [
+
+      ],
+      "tapConfigurations": [
+
+      ]
+    },
+    "type": "Microsoft.Network/networkInterfaces"
+  }
+]
