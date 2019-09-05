@@ -28,12 +28,11 @@ class AzureInventory < TaskHelper
       vm_ips = ips.values_at(*ip_ids)
 
       ip = vm_ips.compact.first
-      if ip
-        {
-          'name' => ip.dig('properties', 'dnsSettings', 'fqdn') || vm['name'],
-          'uri' => ip.dig('properties', 'ipAddress')
-        }.compact
-      end
+      next unless ip
+      {
+        'name' => ip.dig('properties', 'dnsSettings', 'fqdn') || vm['name'],
+        'uri' => ip.dig('properties', 'ipAddress')
+      }.compact
     end.compact
   end
 
@@ -47,7 +46,7 @@ class AzureInventory < TaskHelper
       'subscription_id' => (opts[:subscription_id] || ENV['AZURE_SUBSCRIPTION_ID'])
     }
 
-    missing_keys = creds.select { |k,v| v.nil? }.keys
+    missing_keys = creds.select { |_k, v| v.nil? }.keys
     if missing_keys.any?
       msg = "Parameters #{missing_keys.join(', ')} must be specified or set as environment variables"
       raise TaskHelper::Error.new(msg, 'bolt-plugin/validation-error')
@@ -63,7 +62,7 @@ class AzureInventory < TaskHelper
 
     instances = []
 
-    while url do
+    while url
       # Update the URI and make the next request
       uri = URI.parse(url)
       result = request(:Get, uri, nil, header)
@@ -135,7 +134,7 @@ class AzureInventory < TaskHelper
       expected_tags = opts[:tags].map { |name, value| [name.to_s.downcase, value] }.to_h
 
       vms.select! do |vm|
-        present_tags = vm.fetch('tags', {}).map { |name,value| [name.downcase, value] }.to_h
+        present_tags = vm.fetch('tags', {}).map { |name, value| [name.downcase, value] }.to_h
         # Hash <= checks whether the lhs is a subset of the rhs
         expected_tags <= present_tags
       end
@@ -216,13 +215,13 @@ class AzureInventory < TaskHelper
       result = JSON.parse(response.body)
       # Some responses have an error_description string and others have an
       # error object with a message string embedded.
-      if result.key?('error_description')
-        err = result['error_description']
-      elsif result['error'].is_a?(Hash) && result['error'].key?('message')
-        err = result['error']['message']
-      else
-        err = "Unknown error"
-      end
+      err = if result.key?('error_description')
+              result['error_description']
+            elsif result['error'].is_a?(Hash) && result['error'].key?('message')
+              result['error']['message']
+            else
+              "Unknown error"
+            end
       m = String.new("#{response.code} \"#{response.msg}\"")
       m += ": #{err}" if err
       raise TaskHelper::Error.new(m, 'bolt.plugin/azure-http-error')
@@ -240,10 +239,10 @@ class AzureInventory < TaskHelper
   rescue TaskHelper::Error => e
     # ruby_task_helper doesn't print errors under the _error key, so we have to
     # handle that ourselves
-    return {_error: e.to_h}
+    return { _error: e.to_h }
   end
 end
 
-if __FILE__ == $0
+if $PROGRAM_NAME == __FILE__
   AzureInventory.run
 end

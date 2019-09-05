@@ -86,14 +86,14 @@ describe AzureInventory do
     let(:token) { { 'token_type' => 'foo', 'access_token' => 'bar' } }
 
     it 'loops through each page of results' do
-      [1,2,3].each do |i|
+      [1, 2, 3].each do |i|
         uri = URI.parse("https://example.com/page/#{i}")
         response = { 'value' => ["#{i}a", "#{i}b", "#{i}c"],
-                     'nextLink' => "https://example.com/page/#{i+1}" }
+                     'nextLink' => "https://example.com/page/#{i + 1}" }
         allow(subject).to receive(:request).with(:Get, uri, nil, anything).and_return(response)
       end
       uri = URI.parse("https://example.com/page/4")
-      response = { 'value' => ["4a", "4b", "4c"] }
+      response = { 'value' => %w[4a 4b 4c] }
       allow(subject).to receive(:request).with(:Get, uri, nil, anything).and_return(response)
 
       results = subject.get_all_results("https://example.com/page/1", token)
@@ -121,7 +121,8 @@ describe AzureInventory do
     end
 
     it 'returns an error if one is raised' do
-      allow(subject).to receive(:inventory_targets).and_raise(TaskHelper::Error.new('something went wrong', 'bolt.test/error'))
+      error = TaskHelper::Error.new('something went wrong', 'bolt.test/error')
+      allow(subject).to receive(:inventory_targets).and_raise(error)
       result = subject.task({})
 
       expect(result).to have_key(:_error)
