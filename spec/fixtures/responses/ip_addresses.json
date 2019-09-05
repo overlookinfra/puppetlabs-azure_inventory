@@ -1,0 +1,77 @@
+[
+  {
+    "name": "rgtest-1-ip",
+    "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/another/providers/Microsoft.Network/publicIPAddresses/rgtest-1-ip",
+    "etag": "W/\"7c915a29-b71e-4a3d-92d6-e0bd45f195d9\"",
+    "location": "westus",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "resourceGuid": "b13cffe5-5603-48fa-8607-18a350cbde09",
+      "ipAddress": "52.160.41.155",
+      "publicIPAddressVersion": "IPv4",
+      "publicIPAllocationMethod": "Dynamic",
+      "idleTimeoutInMinutes": 4,
+      "ipTags": [
+
+      ],
+      "ipConfiguration": {
+        "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/another/providers/Microsoft.Network/networkInterfaces/rgtest-1228/ipConfigurations/ipconfig1"
+      }
+    },
+    "type": "Microsoft.Network/publicIPAddresses",
+    "sku": {
+      "name": "Basic",
+      "tier": "Regional"
+    }
+  },
+  {
+    "name": "test-instance-1-ip",
+    "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/publicIPAddresses/test-instance-1-ip",
+    "etag": "W/\"ffa1b3d8-8811-459f-9a47-5d8eef22277c\"",
+    "location": "westus",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "resourceGuid": "a87f2e81-7ecd-4e6f-a33c-9b0ffd544e04",
+      "ipAddress": "40.118.207.76",
+      "publicIPAddressVersion": "IPv4",
+      "publicIPAllocationMethod": "Dynamic",
+      "idleTimeoutInMinutes": 4,
+      "ipTags": [
+
+      ],
+      "ipConfiguration": {
+        "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/networkInterfaces/test-instance-1387/ipConfigurations/ipconfig1"
+      }
+    },
+    "type": "Microsoft.Network/publicIPAddresses",
+    "sku": {
+      "name": "Basic",
+      "tier": "Regional"
+    }
+  },
+  {
+    "name": "test-nic-ip1",
+    "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/publicIPAddresses/test-nic-ip1",
+    "etag": "W/\"0ffe615a-4909-40e3-ad04-3abc9855f141\"",
+    "location": "westus",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "resourceGuid": "f7ad5d33-7199-4e76-83e6-9453a5610784",
+      "ipAddress": "40.118.206.246",
+      "publicIPAddressVersion": "IPv4",
+      "publicIPAllocationMethod": "Dynamic",
+      "idleTimeoutInMinutes": 4,
+      "ipTags": [
+
+      ],
+      "ipConfiguration": {
+        "id": "/subscriptions/42fd1626-3d48-4571-adc9-969eeb596047/resourceGroups/bolt-test/providers/Microsoft.Network/networkInterfaces/test-nic/ipConfigurations/test-ip"
+      }
+    },
+    "type": "Microsoft.Network/publicIPAddresses",
+    "sku": {
+      "name": "Basic",
+      "tier": "Regional"
+    }
+  }
+]
