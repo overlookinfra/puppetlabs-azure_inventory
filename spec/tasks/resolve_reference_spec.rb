@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../../tasks/inventory_targets.rb'
+require_relative '../../tasks/resolve_reference.rb'
 
 describe AzureInventory do
   def with_env(key, val)
@@ -32,7 +32,7 @@ describe AzureInventory do
     allow(subject).to receive(:request).and_return(nil)
   end
 
-  describe "#inventory_targets" do
+  describe "#resolve_reference" do
     before :each do
       allow(subject).to receive(:vms).and_return(fixture('vms'))
       allow(subject).to receive(:ip_addresses).and_return(fixture('ip_addresses'))
@@ -46,7 +46,7 @@ describe AzureInventory do
         { "name" => "rgtest-1", "uri" => "52.160.41.155" },
         { "name" => "test-instance-1", "uri" => "40.118.207.76" }
       ]
-      expect(subject.inventory_targets(opts)).to eq(targets)
+      expect(subject.resolve_reference(opts)).to eq(targets)
     end
   end
 
@@ -113,16 +113,16 @@ describe AzureInventory do
         { "uri": "1.2.3.4", "name": "my-instance" },
         { "uri": "1.2.3.5", "name": "my-other-instance" }
       ]
-      allow(subject).to receive(:inventory_targets).and_return(targets)
+      allow(subject).to receive(:resolve_reference).and_return(targets)
 
       result = subject.task(opts)
-      expect(result).to have_key(:targets)
-      expect(result[:targets]).to eq(targets)
+      expect(result).to have_key(:value)
+      expect(result[:value]).to eq(targets)
     end
 
     it 'returns an error if one is raised' do
       error = TaskHelper::Error.new('something went wrong', 'bolt.test/error')
-      allow(subject).to receive(:inventory_targets).and_raise(error)
+      allow(subject).to receive(:resolve_reference).and_raise(error)
       result = subject.task({})
 
       expect(result).to have_key(:_error)
