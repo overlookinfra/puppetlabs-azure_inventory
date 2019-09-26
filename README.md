@@ -8,7 +8,7 @@
 
 ## Description
 
-This module defines an `inventory_targets` task which can be used to generate Bolt targets from Azure VMs.
+This module includes a Bolt plugin to generate Bolt targets from Azure VMs.
 
 ## Requirements
 
@@ -48,30 +48,26 @@ version: 2
 groups:
   - name: azure-vms
     targets:
-      - _plugin: task
-        task: azure_inventory::inventory_targets
-        parameters:
-          tenant_id: xxxx-xxx-xxxx
-          client_id: xxxx-xxx-xxxx
-          client_secret: xxxx-xxx-xxxx
-          subscription_id: xxxx-xxx-xxxx
-          location: eastus
-          resource_group: bolt
-          tags:
-            foo: bar
-            baz: bak
+      - _plugin: azure_inventory
+        tenant_id: xxxx-xxx-xxxx
+        client_id: xxxx-xxx-xxxx
+        client_secret: xxxx-xxx-xxxx
+        subscription_id: xxxx-xxx-xxxx
+        location: eastus
+        resource_group: bolt
+        tags:
+          foo: bar
+          baz: bak
   - name: azure-scale-sets
     targets:
-      - _plugin: task
-        task: azure_inventory::inventory_targets
-        parameters:
-          tenant_id: xxxx-xxx-xxxx
-          client_id: xxxx-xxx-xxxx
-          client_secret: xxxx-xxx-xxxx
-          subscription_id: xxxx-xxx-xxxx
-          location: eastus2
-          resource_group: puppet
-          scale_set: bolt
-          tags:
-            foo: bar
+      - _plugin: azure_inventory
+        tenant_id: xxxx-xxx-xxxx
+        client_id: xxxx-xxx-xxxx
+        client_secret: xxxx-xxx-xxxx
+        subscription_id: xxxx-xxx-xxxx
+        location: eastus2
+        resource_group: puppet
+        scale_set: bolt
+        tags:
+          foo: bar
 ```
