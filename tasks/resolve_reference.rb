@@ -6,7 +6,7 @@ require 'net/http'
 require 'openssl'
 
 class AzureInventory < TaskHelper
-  def inventory_targets(opts)
+  def resolve_reference(opts)
     creds = credentials(opts)
     token = token(creds)
     vms = nics = ips = nil
@@ -234,8 +234,8 @@ class AzureInventory < TaskHelper
       raise TaskHelper::Error.new(msg, 'bolt.plugin/validation-error')
     end
 
-    targets = inventory_targets(opts)
-    return { targets: targets }
+    targets = resolve_reference(opts)
+    return { value: targets }
   rescue TaskHelper::Error => e
     # ruby_task_helper doesn't print errors under the _error key, so we have to
     # handle that ourselves
