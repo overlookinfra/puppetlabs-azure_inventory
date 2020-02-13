@@ -1,3 +1,11 @@
+## Release 0.3.0
+
+### New features
+
+* **Set `resolve_reference` task to private** ([#6](https://github.com/puppetlabs/puppetlabs-azure_inventory/pulls/6))
+
+    The `resolve_reference` task has been set to `private` so it no longer appears in UI lists.
+
 ## Release 0.2.0
 
 **Changes**
