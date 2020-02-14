@@ -28,5 +28,6 @@
     "scale_set": {
       "type": "Optional[String[1]]"
     }
-  }
+  },
+  "private": true
 }
