@@ -39,6 +39,7 @@ class AzureInventory < TaskHelper
   # Hash of required credentials for authorizing with the Azure REST API
   # These values can be set in 2 locations - inventory config or environment variables
   def credentials(opts)
+    debug("Gathering credentials")
     creds = {
       'tenant_id' => (opts[:tenant_id] || ENV['AZURE_TENANT_ID']),
       'client_id' => (opts[:client_id] || ENV['AZURE_CLIENT_ID']),
@@ -49,7 +50,7 @@ class AzureInventory < TaskHelper
     missing_keys = creds.select { |_k, v| v.nil? }.keys
     if missing_keys.any?
       msg = "Parameters #{missing_keys.join(', ')} must be specified or set as environment variables"
-      raise TaskHelper::Error.new(msg, 'bolt-plugin/validation-error')
+      raise TaskHelper::Error.new(msg, 'bolt-plugin/validation-error', 'debug' => debug_statements)
     end
 
     creds
@@ -63,6 +64,8 @@ class AzureInventory < TaskHelper
     instances = []
 
     while url
+      debug("Making request to #{url}")
+
       # Update the URI and make the next request
       uri = URI.parse(url)
       result = request(:Get, uri, nil, header)
@@ -84,6 +87,8 @@ class AzureInventory < TaskHelper
   # Since each request only returns up to 1,000 results, requests will continue to be
   # sent until there is no longer a nextLink token in the result set
   def ip_addresses(token, creds, opts)
+    debug("Requesting data for IP addresses")
+
     # XXX What happens if I have multiple IP addresses for a single host?
     url = if opts[:resource_group]
             if opts[:scale_set]
@@ -105,6 +110,8 @@ class AzureInventory < TaskHelper
   end
 
   def vms(token, creds, opts)
+    debug("Requesting data for virtual machines")
+
     url = if opts[:resource_group]
             if opts[:scale_set]
               "https://management.azure.com/subscriptions/#{creds['subscription_id']}/" \
@@ -144,6 +151,8 @@ class AzureInventory < TaskHelper
   end
 
   def nics(token, creds, opts)
+    debug("Requesting data for network interfaces")
+
     url = if opts[:resource_group]
             if opts[:scale_set]
               "https://management.azure.com/subscriptions/#{creds['subscription_id']}/" \
@@ -172,6 +181,8 @@ class AzureInventory < TaskHelper
   # Uses the client credentials grant flow
   # https://docs.microsoft.com/en-us/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow
   def token(creds)
+    debug("Requesting authorization token")
+
     data = {
       grant_type: 'client_credentials',
       client_id: creds['client_id'],
@@ -204,7 +215,8 @@ class AzureInventory < TaskHelper
     rescue StandardError => e
       raise TaskHelper::Error.new(
         "Failed to connect to #{uri}: #{e.message}",
-        'bolt.plugin/azure-http-error'
+        'bolt.plugin/azure-http-error',
+        'debug' => debug_statements
       )
     end
 
@@ -224,7 +236,7 @@ class AzureInventory < TaskHelper
             end
       m = String.new("#{response.code} \"#{response.msg}\"")
       m += ": #{err}" if err
-      raise TaskHelper::Error.new(m, 'bolt.plugin/azure-http-error')
+      raise TaskHelper::Error.new(m, 'bolt.plugin/azure-http-error', 'debug' => debug_statements)
     end
   end
 
