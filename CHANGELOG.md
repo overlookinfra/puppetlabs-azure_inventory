@@ -1,3 +1,9 @@
+## Release 0.5.0
+
+### New features
+
+* **Bump maximum Puppet version to include 7.x** ([#14](https://github.com/puppetlabs/puppetlabs-azure_inventory/pull/14))
+
 ## Release 0.4.1
 
 ### Bug fixes
